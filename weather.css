@@ -1,0 +1,48 @@
+.card {
+    background: #666666;
+}
+
+.btn {
+    background: #666666;
+}
+
+.btn-primary {
+    background: rgb(0, 98, 204);
+}
+
+.spacer {
+    padding: 20px;
+    margin: 20px;
+}
+
+h1 {
+    color: white;
+}
+
+h2 {
+    color: white;
+}
+
+h3 {
+    color: white;
+}
+
+#back {
+    background: #212121;
+}
+
+body {
+    background: #212121;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.hot {
+    background: #990000;
+}
+
+.cold {
+    background: #005599;
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Weather | Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    <link rel="stylesheet" href="weather.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyCOZz7r9aYA4p7R0fOzKgotT6w5yBreKko",
+          authDomain: "homeweather-3825e.firebaseapp.com",
+          databaseURL: "https://homeweather-3825e.firebaseio.com",
+          projectId: "homeweather-3825e",
+          storageBucket: "homeweather-3825e.appspot.com",
+          messagingSenderId: "217759245691",
+          appId: "1:217759245691:web:47b224cd0bffa9ba8749de"
+        };
+
+      </script>
+    <script src="weather.js"></script>
+</head>
+
+<body>
+    <div class="container" id="back">
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col">
+                <h1 class="display-4"><i class="fas fa-cloud-sun"></i> Weather</h1>
+            </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col">
+                <div class="btn-group btn-group-lg" role="group" aria-label="units">
+                    <button type="button" class="btn" id="f_btn">
+                        <h1 class=""><i class="fas fa-thermometer-half"></i> &deg;F</h1>
+                    </button>
+                    <button type="button" class="btn" id="c_btn">
+                        <h1 class=""><i class="fas fa-thermometer-half"></i> &deg;C</h1>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body" id="outside">
+                        <h1 class="card-title">Outside&nbsp;<i id="bat_outside" class="fas fa-battery-empty" hidden></i></h1>
+                        <h1 class="card-text">
+                            <div class="row">
+                                <div class="col">
+                                    <i class="fas fa-thermometer-half"></i>
+                                    <span id="temp_outside">Loading...</span>
+                                    &deg;
+                                    <span class="units">F</span>
+                                </div>
+                                &nbsp;
+                                <div class="col">
+                                    <i class="fas fa-tint"></i>
+                                    <span id="hum_outside">Loading...</span>%
+                                </div>
+                            </div>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body" id="kitchen">
+                        <h1 class="card-title">Kitchen&nbsp;<i id="bat_kitchenitchen" class="fas fa-battery-empty" hidden></i></h1>
+                        <h1 class="card-text">
+                            <div class="row">
+                                <div class="col">
+                                    <i class="fas fa-thermometer-half"></i>
+                                    <span id="temp_kitchen">Loading...</span>
+                                    &deg;
+                                    <span class="units">F</span>
+                                </div>
+                                &nbsp;
+                                <div class="col">
+                                    <i class="fas fa-tint"></i>
+                                    <span id="hum_kitchen">Loading...</span>%
+                                </div>
+                            </div>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body" id="downstairs">
+                        <h1 class="card-title">Downstairs&nbsp;<i id="bat_downstairs" class="fas fa-battery-empty" hidden></i></h1>
+                        <h1 class="card-text">
+                            <div class="row">
+                                <div class="col">
+                                    <i class="fas fa-thermometer-half"></i>
+                                    <span id="temp_downstairs">Loading...</span>
+                                    &deg;
+                                    <span class="units">F</span>
+                                </div>
+                                &nbsp;
+                                <div class="col">
+                                    <i class="fas fa-tint"></i>
+                                    <span id="hum_downstairs">Loading...</span>%
+                                </div>
+                            </div>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
