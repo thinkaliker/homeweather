@@ -41,9 +41,9 @@ function setBattery() {
     for (var key in bat) {
         var val = bat[key];
         if (val == '0') {
-            $('#' + key).attr('hidden','')
+            $('#' + key).attr('hidden','');
         } else {
-            $('#' + key).removeAttr('hidden')
+            $('#' + key).removeAttr('hidden');
         }
     }
 }
@@ -57,14 +57,14 @@ function setDegrees() {
             $('#' + key).text(val);
         }
         if (val > HOT_LIMIT) {
-            $('#' + KEY_LOOKUP[key]).addClass('hot')
-            $('#' + KEY_LOOKUP[key]).removeClass('cold')
+            $('#' + KEY_LOOKUP[key]).addClass('hot');
+            $('#' + KEY_LOOKUP[key]).removeClass('cold');
         } else if (val < COLD_LIMIT) {
-            $('#' + KEY_LOOKUP[key]).addClass('cold')
-            $('#' + KEY_LOOKUP[key]).removeClass('hot')
+            $('#' + KEY_LOOKUP[key]).addClass('cold');
+            $('#' + KEY_LOOKUP[key]).removeClass('hot');
         } else {
-            $('#' + KEY_LOOKUP[key]).removeClass('cold')
-            $('#' + KEY_LOOKUP[key]).removeClass('hot')
+            $('#' + KEY_LOOKUP[key]).removeClass('cold');
+            $('#' + KEY_LOOKUP[key]).removeClass('hot');
         }
     }
 }
@@ -106,8 +106,6 @@ function updateAllValues(values) {
 }
 
 $(document).ready(function () {
-    setAll()
-
     $('#f_btn').click(function () {
         units = 'F';
         setUnits();
@@ -118,9 +116,10 @@ $(document).ready(function () {
     });
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-    var database = firebase.database()
-    var db_ref = database.ref('/')
+    var database = firebase.database();
+    var db_ref = database.ref('/');
     db_ref.on('value', function(snapshot) {
-        updateAllValues(snapshot.val())
+        updateAllValues(snapshot.val());
+        setAll();
     })
 });
